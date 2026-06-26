@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { registerSchema, type RegisterFormValues } from '../schemas/register.schema';
 
 const initialValues: RegisterFormValues = {
@@ -77,6 +78,10 @@ export function RegisterForm() {
         <span>I accept the terms and conditions</span>
       </label>
       {errors.acceptTerms ? <small>{errors.acceptTerms}</small> : null}
+
+      <div className="auth-actions">
+        <Link href="/login" className="auth-link">Back to login</Link>
+      </div>
 
       <button type="submit" disabled={!canSubmit}>Create account</button>
       {submitted ? <p className="success-message">Registration form validated successfully.</p> : null}
