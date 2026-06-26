@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { loginSchema, type LoginFormValues } from '../schemas/login.schema';
 
 const initialValues: LoginFormValues = {
@@ -52,6 +53,11 @@ export function LoginForm() {
         <input type="password" value={values.password} onChange={handleChange('password')} placeholder="Enter your password" />
         {errors.password ? <small>{errors.password}</small> : null}
       </label>
+
+      <div className="auth-actions">
+        <Link href="/register" className="auth-link">Create account</Link>
+        <Link href="/forgot-password" className="auth-link">Forgot password?</Link>
+      </div>
 
       <button type="submit" disabled={!canSubmit}>Sign in</button>
       {submitted ? <p className="success-message">Login form validated successfully.</p> : null}
